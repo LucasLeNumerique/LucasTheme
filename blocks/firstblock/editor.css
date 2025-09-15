@@ -1,0 +1,6 @@
+.firstblock {
+    border: 2px dashed #ccc;
+    padding: 2rem;
+    background: #fafafa;
+    pointer-events: auto;
+}

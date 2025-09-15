@@ -1,0 +1,17 @@
+{
+  "apiVersion": 2,
+  "name": "lucastheme/firstblock",
+  "title": "First Block",
+  "icon": "smiley",
+  "category": "layout",
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2"
+    }
+  },
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css",
+  "editorStyle": "file:./editor.css"
+}
