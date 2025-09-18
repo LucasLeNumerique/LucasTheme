@@ -1,24 +1,25 @@
 <?php get_header(); ?>
 
 <main id="site-content">
-    <h1><?php printf(__('Résultats de recherche pour : %s', 'lucastheme'), get_search_query()); ?></h1>
+    <h1>
+        <?php printf(
+            __( 'Résultats pour : %s', 'lucastheme' ),
+            '<span>' . get_search_query() . '</span>'
+        ); ?>
+    </h1>
 
-    <?php if (have_posts()) : ?>
-        <ul class="search-results">
-            <?php while (have_posts()) : the_post(); ?>
-                <li>
-                    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                    <p><?php the_excerpt(); ?></p>
-                </li>
-            <?php endwhile; ?>
-        </ul>
+    <?php if ( have_posts() ) : ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+            <?php get_template_part( 'template-parts/content', 'excerpt' ); ?>
+        <?php endwhile; ?>
 
-        <?php the_posts_navigation(); ?>
+        <?php the_posts_pagination(); ?>
+
     <?php else : ?>
-        <p><?php _e('Aucun résultat trouvé.', 'lucastheme'); ?></p>
-        <?php get_search_form(); ?>
+        <?php get_template_part( 'template-parts/content', 'none' ); ?>
     <?php endif; ?>
 </main>
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php
+get_sidebar();
+get_footer();

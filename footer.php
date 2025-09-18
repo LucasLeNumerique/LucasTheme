@@ -1,4 +1,4 @@
-<footer id="colophon" class="site-footer">
+<footer id="colophon" class="footer">
     <div class="footer-widgets">
         <?php if (is_active_sidebar('footer-1')) : ?>
             <?php dynamic_sidebar('footer-1'); ?>

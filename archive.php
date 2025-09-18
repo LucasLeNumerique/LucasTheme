@@ -1,44 +1,30 @@
 <?php
+/**
+ * Template pour les archives (catégories, tags, auteurs, dates).
+ *
+ * @package lucastheme
+ */
+
 get_header();
 ?>
 
 <main id="site-content">
-    <?php
-    if ( is_category() ) {
-        echo '<h1>' . sprintf( __( 'Catégorie : %s', 'lucastheme' ), single_cat_title( '', false ) ) . '</h1>';
-    } elseif ( is_tag() ) {
-        echo '<h1>' . sprintf( __( 'Tag : %s', 'lucastheme' ), single_tag_title( '', false ) ) . '</h1>';
-    } elseif ( is_author() ) {
-        echo '<h1>' . sprintf( __( 'Auteur : %s', 'lucastheme' ), get_the_author() ) . '</h1>';
-    } elseif ( is_date() ) {
-        echo '<h1>' . __( 'Archives par date', 'lucastheme' ) . '</h1>';
-    } else {
-        echo '<h1>' . __( 'Archives', 'lucastheme' ) . '</h1>';
-    }
-    ?>
+    <header class="page-header">
+        <h1 class="page-title">
+            <?php the_archive_title(); ?>
+        </h1>
+        <?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
+    </header>
 
     <?php if ( have_posts() ) : ?>
         <?php while ( have_posts() ) : the_post(); ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <div class="entry-meta">
-                    <span><?php the_time('j F Y'); ?> | <?php the_author(); ?></span>
-                </div>
-                <div class="entry-summary">
-                    <?php the_excerpt(); ?>
-                </div>
-                <a href="<?php the_permalink(); ?>"><?php _e('Lire la suite', 'lucastheme'); ?></a>
-            </article>
+            <?php get_template_part( 'template-parts/content', 'excerpt' ); ?>
         <?php endwhile; ?>
 
-        <div class="pagination">
-            <?php
-            echo paginate_links();
-            ?>
-        </div>
+        <?php the_posts_pagination(); ?>
 
     <?php else : ?>
-        <p><?php _e('Aucun contenu trouvé.', 'lucastheme'); ?></p>
+        <?php get_template_part( 'template-parts/content', 'none' ); ?>
     <?php endif; ?>
 </main>
 

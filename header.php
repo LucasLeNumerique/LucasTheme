@@ -6,7 +6,7 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<header>
+<header class="header">
     <div class="title">
         <h1><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h1>
         <p><?php bloginfo('description'); ?></p>
