@@ -1,15 +1,16 @@
+@use 'mixins'
 @use 'variables'
 @use 'sass:color'
 
 .header
   position: relative
+  z-index: 1000
+  padding: 1rem 0.5rem
   display: flex
   justify-content: space-between
   align-items: center
-  z-index: 1000
   background-color: variables.$primary-color
   color: white
-  padding: 1rem
   .title
     display: flex
     align-items: center

@@ -1,3 +1,4 @@
+@use 'mixins'
 @use 'variables'
 @use 'sass:color'
 
@@ -11,26 +12,43 @@ body
 h1, h2, h3, h4, h5, h6
     font-weight: bold
     margin-bottom: 1rem
-    line-height: 1.2
+    line-height: 1
+    @include mixins.tablet
+        line-height: 1.25
 
 h1
-    font-size: 2.5rem
-h2
-    font-size: 2rem
-h3
     font-size: 1.75rem
-h4
+    @include mixins.tablet
+        font-size: 2.5rem
+h2
     font-size: 1.5rem
-h5
+    @include mixins.tablet
+        font-size: 2rem
+h3
     font-size: 1.25rem
+    @include mixins.tablet
+        font-size: 1.5rem
+h4
+    font-size: 1rem
+    @include mixins.tablet
+        font-size: 1.25rem
+h5
+    font-size: 1rem
+    @include mixins.tablet
+        font-size: 1.25rem
 h6
     font-size: 1rem
+    @include mixins.tablet
+        font-size: 1.25rem
 
 p
     margin-bottom: 1rem
+    font-size: 1rem
+    @include mixins.tablet
+        font-size: 1.25rem
 
-a
-    color: variables.$primary-color
+p > a
+    color: variables.$secondary-color
     text-decoration: none
     &:hover
-        color: color.adjust(variables.$primary-color, $lightness: -10%)
+        color: variables.$primary-color

@@ -11,10 +11,12 @@
   transition: background 0.3s ease
 
 .btn-primary
-  background: variables.$primary-color
-  color: #fff
+  color: variables.$primary-color
+  border: 1px solid variables.$primary-color
+  border-radius: 5px
   &:hover
-    background-color: color.adjust(variables.$primary-color, $lightness: 25%)
+    color: variables.$tertiary-color
+    background-color: variables.$primary-color
 
 .btn-secondary
   background: variables.$quaternary-color

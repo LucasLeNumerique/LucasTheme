@@ -1,0 +1,32 @@
+@use 'variables'
+@use 'mixins'
+
+.article-preview
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 0.5rem
+    width: 100%
+    max-width: 300px
+    height: 350px
+    border: 1px solid variables.$text
+    border-radius: 5px
+    @include mixins.laptop
+        &:hover
+            border: 1px solid variables.$primary-color
+            box-shadow: 0px 2px 4px variables.$primary-color
+    .anchor-title
+        display: inline-block
+        &:hover
+            color: variables.$primary-color
+    h2, h3, h4
+        width: fit-content
+    p
+        font-size: 1.25rem
+        line-height: 1.2
+        line-clamp: 5
+    .anchor-button
+        button
+            width: 100%
+    
+        

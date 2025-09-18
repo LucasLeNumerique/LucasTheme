@@ -1,17 +1,20 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('excerpt'); ?>>
-    <h2 class="entry-title">
-        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-    </h2>
-
-    <div class="entry-meta">
-        <span><?php the_time('j F Y'); ?> | <?php the_author(); ?></span>
+<article class="article-preview" id="post-<?php the_ID(); ?>" <?php post_class('excerpt'); ?>>
+    <div class="article-header">
+        <a class="anchor-title" href="<?php the_permalink(); ?>">
+            <h3 class="entry-title"><?php the_title(); ?></h3>
+        </a>    
+        <div class="entry-meta">
+            <span><?php the_time('j F Y'); ?> | <?php the_author(); ?></span>
+        </div>
     </div>
 
     <div class="entry-summary">
         <?php the_excerpt(); ?>
     </div>
 
-    <a class="read-more" href="<?php the_permalink(); ?>">
-        <?php _e('Lire la suite', 'lucastheme'); ?>
+    <a class="anchor-button" href="<?php the_permalink(); ?>">
+        <button class="read-more btn btn-primary">
+            <?php _e('Lire la suite', 'lucastheme'); ?>
+        </button>
     </a>
 </article>

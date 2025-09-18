@@ -9,7 +9,6 @@
 <header class="header">
     <div class="title">
         <h1><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h1>
-        <p><?php bloginfo('description'); ?></p>
     </div>
 
     <button class="menu-toggle" aria-expanded="false">☰</button>
