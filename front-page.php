@@ -8,7 +8,7 @@
 
     <section class="latest-posts">
         <h2><?php _e( 'Derniers articles', 'lucastheme' ); ?></h2>
-        <div class="post-excerpt-grid">
+        <div class="blog-post-excerpt-grid">
             <?php
             $latest = new WP_Query( array( 'posts_per_page' => 3 ) );
             if ( $latest->have_posts() ) :

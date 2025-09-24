@@ -1,16 +1,8 @@
-<?php
-/**
- * Template part pour l’absence de contenu.
- *
- * @package lucastheme
- */
-?>
-
 <section class="no-results not-found">
     <header class="page-header">
-        <h1 class="page-title">
+        <h2 class="page-title">
             <?php _e( 'Rien trouvé', 'lucastheme' ); ?>
-        </h1>
+        </h2>
     </header>
 
     <div class="page-content">
@@ -26,12 +18,10 @@
         <?php elseif ( is_search() ) : ?>
 
             <p><?php _e( 'Désolé, aucun résultat ne correspond à votre recherche. Essayez avec d’autres mots-clés.', 'lucastheme' ); ?></p>
-            <?php get_search_form(); ?>
 
         <?php else : ?>
 
             <p><?php _e( 'Nous n’avons rien trouvé ici. Essayez une recherche.', 'lucastheme' ); ?></p>
-            <?php get_search_form(); ?>
 
         <?php endif; ?>
     </div>

@@ -1,32 +1,40 @@
 @use 'variables'
 @use 'mixins'
+@use 'sass:color'
 
 .article-preview
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    padding: 0.5rem
-    width: 100%
-    max-width: 300px
-    height: 350px
-    border: 1px solid variables.$text
-    border-radius: 5px
-    @include mixins.laptop
-        &:hover
-            border: 1px solid variables.$primary-color
-            box-shadow: 0px 2px 4px variables.$primary-color
-    .anchor-title
-        display: inline-block
-        &:hover
-            color: variables.$primary-color
-    h2, h3, h4
-        width: fit-content
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding: 0.5rem
+  width: 100%
+  max-width: 300px
+  height: 350px
+  border: 1px solid variables.$secondary-color
+  border-radius: 5px
+  box-shadow: 0px 2px 2px variables.$secondary-color
+  transition: all 0.3s ease
+
+  @include mixins.laptop
+    &:hover
+      border: 1px solid variables.$primary-color
+      box-shadow: 0px 2px 4px variables.$primary-color
+
+  h2, h3, h4
+    &:hover
+      color: variables.$primary-color
+
+  .entry-summary
     p
-        font-size: 1.25rem
-        line-height: 1.2
-        line-clamp: 5
-    .anchor-button
-        button
-            width: 100%
-    
-        
+      font-size: 1.25rem
+      line-height: 1.2
+      display: -webkit-box
+      -webkit-line-clamp: 5
+      -webkit-box-orient: vertical
+      overflow: hidden
+      text-overflow: ellipsis
+
+  .anchor-button
+    button
+        width: 100%
+        font-size: 1rem

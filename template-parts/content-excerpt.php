@@ -13,7 +13,7 @@
     </div>
 
     <a class="anchor-button" href="<?php the_permalink(); ?>">
-        <button class="read-more btn btn-primary">
+        <button class="btn btn-primary">
             <?php _e('Lire la suite', 'lucastheme'); ?>
         </button>
     </a>

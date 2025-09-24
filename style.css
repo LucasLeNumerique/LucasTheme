@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ===========================
  * RESET GLOBAL MINIMAL
  * =========================== */
@@ -59,21 +60,24 @@ main {
   padding: 2rem 0.5rem;
 }
 
-.post-excerpt-grid {
+.blog-post-excerpt-grid {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  justify-content: flex-start;
 }
 @media (min-width: 768px) {
-  .post-excerpt-grid {
+  .blog-post-excerpt-grid {
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 1.5rem;
   }
 }
 @media (min-width: 1024px) {
-  .post-excerpt-grid {
+  .blog-post-excerpt-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
   }
 }
 
@@ -82,7 +86,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: #424242;
-  background: #fff;
+  background-color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -172,30 +176,34 @@ p > a:hover {
   position: relative;
   z-index: 1000;
   padding: 1rem 0.5rem;
+  background-image: linear-gradient(to right, #EF7722, #FAA533);
+  color: white;
+}
+.header .header-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #EF7722;
-  color: white;
 }
-.header .title {
+.header .header-container .title {
   display: flex;
   align-items: center;
-  gap: 0 1rem;
+  gap: 1rem;
 }
-.header .title h1 {
+.header .header-container .title h1 {
   margin: 0;
   font-size: 1.5rem;
 }
-.header .title h1 a {
+.header .header-container .title h1 a {
   color: white;
 }
-.header .title p {
+.header .header-container .title p {
   margin: 0;
   font-size: 1rem;
   font-style: italic;
 }
-.header .menu-toggle {
+.header .header-container .menu-toggle {
   z-index: 1100;
   display: block;
   cursor: pointer;
@@ -207,7 +215,12 @@ p > a:hover {
   color: white;
   position: relative;
 }
-.header nav {
+@media (min-width: 1024px) {
+  .header .header-container .menu-toggle {
+    display: none;
+  }
+}
+.header .header-container nav {
   z-index: 1050;
   position: fixed;
   top: 0;
@@ -221,58 +234,107 @@ p > a:hover {
   background-color: #EF7722;
   transition: left 0.3s ease-in-out;
 }
-.header nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-.header nav ul li {
-  margin: 1rem 0;
-}
-.header nav ul a {
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-}
-.header nav ul a:hover {
-  color: rgb(229.5, 229.5, 229.5);
-}
-.header nav.active {
-  left: 0;
-}
 @media (min-width: 1024px) {
-  .header .menu-toggle {
-    display: none;
-  }
-  .header nav {
+  .header .header-container nav {
     position: static;
     width: auto;
     height: auto;
     flex-direction: row;
     justify-content: flex-end;
+    background: none;
     transition: none;
     left: auto;
   }
-  .header nav ul {
+}
+.header .header-container nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .header .header-container nav ul {
     display: flex;
     align-items: center;
     gap: 2rem;
   }
-  .header nav ul li {
+}
+.header .header-container nav ul li {
+  position: relative;
+  margin: 1rem 0;
+}
+@media (min-width: 1024px) {
+  .header .header-container nav ul li {
     margin: 0;
   }
 }
+.header .header-container nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.header .header-container nav ul li a:hover {
+  color: rgb(229.5, 229.5, 229.5);
+}
+.header .header-container nav ul li.menu-item-has-children > a::after {
+  content: " ▼";
+  font-size: 0.75rem;
+  margin-left: 0.3rem;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.header .header-container nav ul li ul.sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #EF7722;
+  list-style: none;
+  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1200;
+}
+.header .header-container nav ul li ul.sub-menu li {
+  margin: 0;
+}
+.header .header-container nav ul li ul.sub-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+.header .header-container nav ul li ul.sub-menu li a:hover {
+  background-color: #FAA533;
+}
+@media (min-width: 1024px) {
+  .header .header-container nav ul li:hover > ul.sub-menu {
+    display: block;
+  }
+  .header .header-container nav ul li:hover > a::after {
+    transform: rotate(180deg);
+  }
+}
+.header .header-container nav.active {
+  left: 0;
+}
 
 .footer {
-  padding: 2rem 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  background-image: linear-gradient(to right, #EF7722, #FAA533);
 }
-.footer .footer-menu {
+.footer .first-row {
+  padding: 1rem 0.5rem;
+  color: white;
+}
+.footer .first-row .footer-menu {
   display: flex;
   flex-direction: column;
+}
+.footer .site-info {
+  background-color: white;
+}
+.footer .site-info p {
+  font-size: 1rem;
+  margin: 0.25rem;
+  text-align: center;
 }
 
 .article-preview {
@@ -283,8 +345,10 @@ p > a:hover {
   width: 100%;
   max-width: 300px;
   height: 350px;
-  border: 1px solid #424242;
+  border: 1px solid #FAA533;
   border-radius: 5px;
+  box-shadow: 0px 2px 2px #FAA533;
+  transition: all 0.3s ease;
 }
 @media (min-width: 1024px) {
   .article-preview:hover {
@@ -292,22 +356,21 @@ p > a:hover {
     box-shadow: 0px 2px 4px #EF7722;
   }
 }
-.article-preview .anchor-title {
-  display: inline-block;
-}
-.article-preview .anchor-title:hover {
+.article-preview h2:hover, .article-preview h3:hover, .article-preview h4:hover {
   color: #EF7722;
 }
-.article-preview h2, .article-preview h3, .article-preview h4 {
-  width: fit-content;
-}
-.article-preview p {
+.article-preview .entry-summary p {
   font-size: 1.25rem;
   line-height: 1.2;
-  line-clamp: 5;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .article-preview .anchor-button button {
   width: 100%;
+  font-size: 1rem;
 }
 
 .search-form {
@@ -316,6 +379,7 @@ p > a:hover {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  background-color: #EBEBEB;
 }
 .search-form .search-frame {
   display: flex;
@@ -328,6 +392,7 @@ p > a:hover {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   font-size: 1rem;
+  background-color: white;
 }
 .search-form .search-submit {
   display: inline-block;
@@ -349,6 +414,7 @@ p > a:hover {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -358,10 +424,9 @@ p > a:hover {
 .btn-primary {
   color: #EF7722;
   border: 1px solid #EF7722;
-  border-radius: 5px;
 }
 .btn-primary:hover {
-  color: #EBEBEB;
+  color: white;
   background-color: #EF7722;
 }
 

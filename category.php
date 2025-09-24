@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main id="site-content">
-    <h1><?php _e( 'Blog', 'lucastheme' ); ?></h1>
+    <h1><?php single_cat_title(); ?></h1>
 
     <div class="blog-post-excerpt-grid">
         <?php if ( have_posts() ) : ?>
