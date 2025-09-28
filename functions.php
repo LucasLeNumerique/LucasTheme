@@ -21,7 +21,7 @@ add_action('after_setup_theme', 'lucastheme_setup');
 // Charger styles et scripts
 function lucastheme_enqueue_assets()
 {
-    wp_enqueue_style('lucastheme-style', get_stylesheet_uri(), [], wp_get_theme()->get('Version'));
+    wp_enqueue_style('lucastheme-style', get_template_directory_uri() . '/main.css', [], wp_get_theme()->get('Version'));
 
     wp_enqueue_style(
         'lucastheme-google-fonts',
