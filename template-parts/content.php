@@ -1,13 +1,17 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <header>
-        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-        <p class="meta">Publié le <?php the_time(get_option('date_format')); ?> par <?php the_author(); ?></p>
+    <header class="entry-header">
+        <h1 class="entry-title"><?php the_title(); ?></h1>
+        <div class="entry-meta">
+            <span><?php the_time('j F Y'); ?> | <?php the_author(); ?></span>
+        </div>
     </header>
+
     <div class="entry-content">
-        <?php if (is_singular()) : ?>
-            <?php the_content(); ?>
-        <?php else : ?>
-            <?php the_excerpt(); ?>
-        <?php endif; ?>
+        <?php the_content(); ?>
     </div>
+
+    <footer class="entry-footer">
+        <?php the_category(', '); ?>
+        <?php the_tags('<span class="tags">', ', ', '</span>'); ?>
+    </footer>
 </article>

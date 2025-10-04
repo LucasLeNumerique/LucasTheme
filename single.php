@@ -1,37 +1,31 @@
-<?php
-get_header();
-?>
+<?php get_header(); ?>
 
 <main id="site-content">
-    <?php
-    if ( have_posts() ) :
-        while ( have_posts() ) : the_post();
-    ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <h1><?php the_title(); ?></h1>
-                <div class="entry-meta">
-                    <span><?php the_time('j F Y'); ?> | <?php the_author(); ?></span>
+    <?php if ( have_posts() ) : ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+            
+            <?php get_template_part( 'template-parts/content', get_post_type() ); ?>
+            
+            <nav class="post-navigation">
+                <div class="nav-previous">
+                    <?php previous_post_link( '%link', '← %title' ); ?>
                 </div>
-                <div class="entry-content">
-                    <?php the_content(); ?>
+                <div class="nav-next">
+                    <?php next_post_link( '%link', '%title →' ); ?>
                 </div>
-                <div class="entry-footer">
-                    <?php the_category(', '); ?> | <?php the_tags(); ?>
-                </div>
-            </article>
+            </nav>
 
             <?php
+            // Si tu veux activer les commentaires :
             if ( comments_open() || get_comments_number() ) :
                 comments_template();
             endif;
             ?>
 
-    <?php
-        endwhile;
-    else :
-        echo '<p>' . __('Aucun contenu trouvé.', 'lucastheme') . '</p>';
-    endif;
-    ?>
+        <?php endwhile; ?>
+    <?php else : ?>
+        <?php get_template_part( 'template-parts/content', 'none' ); ?>
+    <?php endif; ?>
 </main>
 
 <?php

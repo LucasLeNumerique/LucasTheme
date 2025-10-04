@@ -1,3 +1,5 @@
+import '../sass/main.sass';
+
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('header nav');
@@ -8,4 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.classList.toggle('active');
         menuToggle.textContent = nav.classList.contains('active') ? '✕' : '☰';
     });
+
+    console.log('lucastheme JS actif')
 });

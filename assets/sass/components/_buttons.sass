@@ -1,0 +1,25 @@
+@use '../utils/variables'
+@use 'sass:color'
+
+.btn
+    display: inline-block
+    padding: 0.75rem 1.5rem
+    border-radius: 4px
+    font-size: 1rem
+    font-weight: bold
+    text-align: center
+    cursor: pointer
+    transition: background 0.3s ease
+
+.btn-primary
+    color: variables.$primary-color
+    border: 1px solid variables.$primary-color
+    &:hover
+        color: white
+        background-color: variables.$primary-color
+
+.btn-secondary
+    background: variables.$quaternary-color
+    color: #fff
+    &:hover
+        background-color: color.adjust(variables.$quaternary-color, $lightness: 25%)

@@ -6,18 +6,22 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<header>
-    <div class="title">
-        <h1><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h1>
-        <p><?php bloginfo('description'); ?></p>
+<header class="header">
+    <div class="header-container">
+        <div class="title">
+            <h1><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h1>
+        </div>
+
+        <button class="menu-toggle" aria-expanded="false">☰</button>
+
+        <nav>
+            <?php
+            wp_nav_menu([
+                'theme_location' => 'primary',
+                'menu_class'     => 'menu',
+                'container'      => false,
+            ]);
+            ?>
+        </nav>
     </div>
-
-    <button class="menu-toggle" aria-expanded="false">☰</button>
-
-    <nav>
-        <?php wp_nav_menu([
-            'theme_location' => 'primary',
-            'menu_class' => 'menu',
-        ]); ?>
-    </nav>
 </header>

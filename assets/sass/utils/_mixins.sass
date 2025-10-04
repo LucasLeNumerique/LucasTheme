@@ -1,0 +1,25 @@
+@use '../utils/variables'
+@use 'sass:map'
+    
+$breakpoints: (
+  "mobile": "(min-width: #{variables.$mobile})",
+  "tablet": "(min-width: #{variables.$tablet})",
+  "laptop": "(min-width: #{variables.$laptop})",
+)
+
+@mixin responsive($size)
+  $query: map.get($breakpoints, $size)
+  @media #{$query}
+    @content
+
+@mixin mobile
+  @include responsive("mobile")
+    @content
+
+@mixin tablet
+  @include responsive("tablet")
+    @content
+
+@mixin laptop
+  @include responsive("laptop")
+    @content
